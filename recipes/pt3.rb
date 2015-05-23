@@ -14,5 +14,8 @@
     end
 end
 
-# git "pt3" do
+git "/tmp/pt3" do
+    repository "https://github.com/m-tsudo/pt3.git"
+    revision "master"
+end
 
