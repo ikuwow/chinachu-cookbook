@@ -1,0 +1,16 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: debian-7.8
+  - name: debian/jessie64
+
+suites:
+  - name: default
+    run_list:
+      - recipe[chinachu::default]
+    attributes:
