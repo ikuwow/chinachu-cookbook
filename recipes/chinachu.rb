@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{zip pkg-config libpcsclite-dev}.each do |p|
+%w{zip pkg-config libpcsclite-dev autoconf automake}.each do |p|
     package p do
         action :install
     end
@@ -27,4 +27,17 @@ bash "Install arib25" do
     cwd "/tmp/pt1-c44e16dbb0e2/arib25"
     code "make && make install"
     creates "/usr/local/lib/libarib25.so"
+end
+
+# recpt1
+git "/tmp/recpt1" do
+    repository "https://github.com/stz2012/recpt1.git"
+    revision "master"
+    not_if "which recpt1"
+end
+
+bash "Install recpt1" do
+    cwd "/tmp/recpt1/recpt1"
+    code "bash ./autogen.sh && ./configure --enable-b25 && make && make install"
+    not_if "which recpt1"
 end
