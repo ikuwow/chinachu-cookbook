@@ -7,8 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
-package "pcscd" do
-    action :install
+%w{pcscd pcsc-tools}.each do |p|
+    package p do
+        action :install
+    end
 end
 
 service "pcscd" do
