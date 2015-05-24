@@ -41,3 +41,10 @@ bash "Install recpt1" do
     code "bash ./autogen.sh && ./configure --enable-b25 && make && make install"
     not_if "which recpt1"
 end
+
+
+# Chinachu
+
+user "chinachu" do
+    action :create
+end
