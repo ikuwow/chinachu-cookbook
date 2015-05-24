@@ -6,3 +6,7 @@ set :backend, :exec
         it { should be_installed }
     end
 end
+
+describe command('lsmod | grep pt3_drv') do
+    its(:exit_status) { should eq 0 }
+end
