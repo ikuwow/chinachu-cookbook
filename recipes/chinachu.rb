@@ -55,7 +55,16 @@ end
 end
 
 user "chinachu" do
+    home "/home/chinachu"
+    manage_home true
+    shell "/bin/bash"
     action :create
 end
 
-
+=begin
+git "~chinachu/chinachu" do
+    repository "https://github.com/kanreisa/Chinachu.git"
+    user "chinachu"
+    group "chinachu"
+end
+=end

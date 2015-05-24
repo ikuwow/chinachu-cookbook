@@ -22,3 +22,9 @@ end
         it { should be_installed }
     end
 end
+
+describe user("chinachu") do
+    it { should exist }
+    it { should have_home_directory "/home/chinachu" }
+    it { should have_login_shell "/bin/bash" }
+end
