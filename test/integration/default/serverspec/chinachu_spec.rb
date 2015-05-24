@@ -16,7 +16,7 @@ describe command("which recpt1") do
 end
 
 %w{build-essential curl git-core libssl-dev
-    yasm libtool autoconf libboost-all-dev
+    libtool autoconf libboost-all-dev
 }.each do |p|
     describe package(p) do
         it { should be_installed }

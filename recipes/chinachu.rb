@@ -47,11 +47,29 @@ end
 
 %w{
     build-essential curl git-core libssl-dev
-    yasm libtool autoconf libboost-all-dev
+    libtool autoconf libboost-all-dev
+    expect
 }.each do |p|
     package p do
         action :install
     end
+end
+
+package "yasm" do
+    action :remove
+end
+
+bash "Install yasm 1.2" do
+    cwd "/tmp"
+    code <<-EOC
+    wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz
+    tar xzvf yasm-1.2.0.tar.gz
+    cd yasm-1.2.0
+    ./configure
+    make
+    make install
+    EOC
+    not_if "which yasm"
 end
 
 user "chinachu" do
@@ -62,9 +80,26 @@ user "chinachu" do
 end
 
 =begin
-git "~chinachu/chinachu" do
+git "/home/chinachu/chinachu" do
     repository "https://github.com/kanreisa/Chinachu.git"
     user "chinachu"
     group "chinachu"
+    notifies :run, "bash[Chinachu Installer]", :immediately
 end
+
+bash "Chinachu Installer" do
+    user "chinachu"
+    cwd "/home/chinachu/chinachu"
+    code <<-EOC
+    expect -c '
+    spawn ./chinachu installer | tee ./chef_chinachu_log
+    expect "what do you install? > "
+    send 1\r
+    expect eof
+    '
+    EOC
+    action :nothing
+end
+
+
 =end
