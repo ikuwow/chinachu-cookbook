@@ -4,7 +4,8 @@ set :backend, :exec
 
 [
     "git",
-    "build-essential"
+    "build-essential",
+    "dkms"
 ].each do |pkg|
     describe package(pkg) do
         it { should be_installed }

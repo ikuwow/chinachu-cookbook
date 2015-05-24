@@ -11,6 +11,7 @@
 [
     "build-essential",
     "git",
+    "dkms",
     "linux-headers-#{node[:os_version]}"
 ].each do |pkg|
     package pkg do
