@@ -10,3 +10,7 @@ end
 describe command('lsmod | grep pt3_drv') do
     its(:exit_status) { should eq 0 }
 end
+
+describe command('cat /etc/modules | grep pt3_drv') do
+    its(:exit_status) { should eq 0 }
+end

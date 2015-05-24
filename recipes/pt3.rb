@@ -30,9 +30,13 @@ bash "Install PT3 Driver" do
     not_if "lsmod | grep pt3_drv"
 end
 
-# modprobe pt3_drv
 bash "Load Driver" do
     code "modprobe pt3_drv"
     not_if "lsmod | grep pt3_drv"
+end
+
+bash "Autoload pt3_drv" do
+    code "echo pt3_drv >> /etc/modules"
+    not_if "cat /etc/modules | grep pt3_drv"
 end
 
