@@ -10,3 +10,7 @@
 package "pcscd" do
     action :install
 end
+
+service "pcscd" do
+    action [:start, :enable]
+end
