@@ -14,3 +14,11 @@ end
 describe command("which recpt1") do
     its(:exit_status) { should eq 0 }
 end
+
+%w{build-essential curl git-core libssl-dev
+    yasm libtool autoconf libboost-all-dev
+}.each do |p|
+    describe package(p) do
+        it { should be_installed }
+    end
+end

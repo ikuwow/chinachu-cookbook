@@ -45,6 +45,17 @@ end
 
 # Chinachu
 
+%w{
+    build-essential curl git-core libssl-dev
+    yasm libtool autoconf libboost-all-dev
+}.each do |p|
+    package p do
+        action :install
+    end
+end
+
 user "chinachu" do
     action :create
 end
+
+
