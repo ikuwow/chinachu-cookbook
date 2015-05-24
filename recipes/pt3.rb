@@ -8,11 +8,17 @@
 #
 
 
-%w{build-essential git}.each do |pkg|
+[
+    "build-essential",
+    "git",
+    "linux-headers-#{node[:os_version]}"
+].each do |pkg|
     package pkg do
         action :install
     end
 end
+
+puts node[:os_version]
 
 git "/tmp/pt3" do
     repository "https://github.com/m-tsudo/pt3.git"
