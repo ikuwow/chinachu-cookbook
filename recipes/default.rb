@@ -13,11 +13,6 @@ package "aptitude" do
     action :install
 end
 
-bash "Update" do
-    code "aptitude -y update && aptitude -y upgrade"
-    user "root"
-end
-
 include_recipe "chinachu::pt3"
 include_recipe "chinachu::scr3310"
 include_recipe "chinachu::chinachu"
