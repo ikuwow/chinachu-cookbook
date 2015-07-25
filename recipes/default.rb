@@ -17,3 +17,7 @@ include_recipe "chinachu::pt3"
 include_recipe "chinachu::scr3310"
 include_recipe "chinachu::chinachu"
 
+
+package "handbrake-cli" do
+    action :install
+end
