@@ -79,14 +79,15 @@ user "chinachu" do
     action :create
 end
 
-=begin
 git "/home/chinachu/chinachu" do
     repository "https://github.com/kanreisa/Chinachu.git"
     user "chinachu"
     group "chinachu"
-    notifies :run, "bash[Chinachu Installer]", :immediately
+    action :checkout
+    # notifies :run, "bash[Chinachu Installer]", :immediately
 end
 
+=begin
 bash "Chinachu Installer" do
     user "chinachu"
     cwd "/home/chinachu/chinachu"
