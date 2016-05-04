@@ -5,4 +5,4 @@ license          'MIT'
 description      'Installs/Configures chinachu'
 depends          'apt'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.5.3'
+version          '0.6.0'
