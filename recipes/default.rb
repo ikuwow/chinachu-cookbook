@@ -13,11 +13,10 @@ package "aptitude" do
     action :install
 end
 
-include_recipe "chinachu::pt3"
-include_recipe "chinachu::scr3310"
-include_recipe "chinachu::chinachu"
+include_recipe "apt"
 
+include_recipe "chinachu::pt3" # TV tuner
+include_recipe "chinachu::scr3310" # B-CAS card reader
+include_recipe "chinachu::chinachu" # chinachu app
+# include_recipe "chinachu::additional" # additional components
 
-package "handbrake-cli" do
-    action :install
-end
